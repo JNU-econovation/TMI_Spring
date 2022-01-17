@@ -12,7 +12,6 @@ import java.util.List;
 public class FeedContent {
     @Id
     private String id;
-
     private String profile;
     private String name;
     private int age;

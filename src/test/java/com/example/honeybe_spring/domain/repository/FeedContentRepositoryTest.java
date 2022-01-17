@@ -5,6 +5,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -33,5 +35,6 @@ class FeedContentRepositoryTest {
         List<FeedContent> all = feedContentRepository.findAll();
 
         //then
+        Assertions.assertThat(all.get(0).getName()).isEqualTo("name");
     }
 }
