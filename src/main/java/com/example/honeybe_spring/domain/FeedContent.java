@@ -18,17 +18,19 @@ public class FeedContent {
     private int score;
     private String[] personalities;
     private String introduce;
+    private String[] userId;
 
     public FeedContent() {
     }
 
     @Builder
-    public FeedContent(String profile, String name, int age, int score, String[] personalities, String introduce) {
+    public FeedContent(String profile, String name, int age, int score, String[] personalities, String introduce, String[] userId) {
         this.profile = profile;
         this.name = name;
         this.age = age;
         this.score = score;
         this.personalities = personalities;
         this.introduce = introduce;
+        this.userId = userId;
     }
 }

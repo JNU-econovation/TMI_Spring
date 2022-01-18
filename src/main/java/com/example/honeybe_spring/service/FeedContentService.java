@@ -1,6 +1,7 @@
 package com.example.honeybe_spring.service;
 
 import com.example.honeybe_spring.domain.FeedContent;
+import com.example.honeybe_spring.domain.TmiData;
 import com.example.honeybe_spring.domain.dto.LikeUserDto;
 import com.example.honeybe_spring.domain.repository.FeedContentRepository;
 import lombok.AllArgsConstructor;
@@ -22,8 +23,8 @@ public class FeedContentService {
 
     public void save(FeedContent feedContent){
         log.info("FeedContentService feedContent = {}", feedContent.toString());
-
         feedContentRepository.save(feedContent);
+
     }
 
 
@@ -34,6 +35,7 @@ public class FeedContentService {
 
     public FeedContent findById(String id) {
         Optional<FeedContent> optionalFeedContent = feedContentRepository.findById(id);
+
         if(optionalFeedContent.isPresent()) {
             FeedContent feedContent = optionalFeedContent.get();
             return feedContent;
@@ -44,17 +46,18 @@ public class FeedContentService {
 
     public LikeUserDto getLikeUser(String id) {
         Optional<FeedContent> optionalFeedContent = feedContentRepository.findById(id);
+
         if (optionalFeedContent.isPresent()) {
             FeedContent feedContent = optionalFeedContent.get();
-
             LikeUserDto likeUserDto = LikeUserDto.builder()
                     .profile(feedContent.getProfile())
                     .name(feedContent.getName())
                     .age(feedContent.getAge())
                     .build();
-
             return likeUserDto;
         }
         return null;
     }
+
+
 }

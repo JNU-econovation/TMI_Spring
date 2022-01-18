@@ -19,15 +19,17 @@ class FeedContentRepositoryTest {
 
     @Test
     void test() {
-        String[] lists = {"활발함", "소심함", "적극적"};
+        String[] personalities = {"활발함", "소심함", "적극적","asds","Ads","asdas","fadfs"};
+        String[] userId = {"1", "2", "3"};
 
         //given
         FeedContent feedContent = FeedContent.builder()
                 .profile("profile")
                 .name("name")
                 .age(20)
-                .personalities(lists)
+                .personalities(personalities)
                 .introduce("introduce")
+                .userId(userId)
                 .build();
 
         //when
