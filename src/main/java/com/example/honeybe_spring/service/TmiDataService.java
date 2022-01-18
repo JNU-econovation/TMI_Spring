@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class TmiDataService {
@@ -15,5 +17,9 @@ public class TmiDataService {
     public void save(TmiData tmiData) {
         log.info("TmiDataService save() calle = {}", tmiData);
         tmiDataRepository.save(tmiData);
+    }
+
+    public List<TmiData> findAll() {
+        return tmiDataRepository.findAll();
     }
 }

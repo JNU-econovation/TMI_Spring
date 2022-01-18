@@ -1,11 +1,8 @@
 package com.example.honeybe_spring.service;
 
-import com.example.honeybe_spring.domain.FeedContent;
-import com.example.honeybe_spring.domain.TmiData;
-import com.example.honeybe_spring.domain.dto.LikeUserDto;
+import com.example.honeybe_spring.domain.dto.FeedContentDto;
 import com.example.honeybe_spring.domain.repository.FeedContentRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,43 +18,26 @@ public class FeedContentService {
     @Autowired
     private FeedContentRepository feedContentRepository;
 
-    public void save(FeedContent feedContent){
-        log.info("FeedContentService feedContent = {}", feedContent.toString());
-        feedContentRepository.save(feedContent);
+    public void save(FeedContentDto feedContentDto){
+        log.info("FeedContentService feedContent = {}", feedContentDto.toString());
+        feedContentRepository.save(feedContentDto);
 
     }
 
-
-    public List<FeedContent> findAll() {
-        List<FeedContent> all = feedContentRepository.findAll();
+    public List<FeedContentDto> findAll() {
+        List<FeedContentDto> all = feedContentRepository.findAll();
         return all;
     }
 
-    public FeedContent findById(String id) {
-        Optional<FeedContent> optionalFeedContent = feedContentRepository.findById(id);
+    public FeedContentDto findById(String id) {
+        Optional<FeedContentDto> optionalFeedContent = feedContentRepository.findById(id);
 
         if(optionalFeedContent.isPresent()) {
-            FeedContent feedContent = optionalFeedContent.get();
-            return feedContent;
+            FeedContentDto feedContentDto = optionalFeedContent.get();
+            return feedContentDto;
         }
 
         return null;
     }
-
-    public LikeUserDto getLikeUser(String id) {
-        Optional<FeedContent> optionalFeedContent = feedContentRepository.findById(id);
-
-        if (optionalFeedContent.isPresent()) {
-            FeedContent feedContent = optionalFeedContent.get();
-            LikeUserDto likeUserDto = LikeUserDto.builder()
-                    .profile(feedContent.getProfile())
-                    .name(feedContent.getName())
-                    .age(feedContent.getAge())
-                    .build();
-            return likeUserDto;
-        }
-        return null;
-    }
-
 
 }
