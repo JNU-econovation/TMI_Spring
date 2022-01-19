@@ -16,13 +16,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class AWSConfiguration implements WebMvcConfigurer {
 
-    @Value("${amazonProperties.accessKey}")
+    @Value("${cloud.aws.credentials.access-key}")
     private String accessKey;
 
-    @Value("${amazonProperties.secretKey}")
+    @Value("${cloud.aws.credentials.secret-key}")
     private String secretKey;
 
-    @Value("${amazonProperties.region}")
+    @Value("${cloud.aws.region.static}")
     private String region;
 
     @Bean

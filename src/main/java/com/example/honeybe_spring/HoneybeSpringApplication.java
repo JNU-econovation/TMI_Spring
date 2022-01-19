@@ -9,5 +9,4 @@ public class HoneybeSpringApplication {
     public static void main(String[] args) {
         SpringApplication.run(HoneybeSpringApplication.class, args);
     }
-
 }
