@@ -21,17 +21,17 @@ public class FeedContentController {
 //        return all;
 //    }
 
-    @GetMapping("users/{id}")
-    public FeedContentDto findById(@PathVariable String id) {
-        FeedContentDto feedContentDto = feedContentService.findById(id);
+    @GetMapping("users/{userId}")
+    public FeedContentDto findById(@PathVariable String userId) {
+        FeedContentDto feedContentDto = feedContentService.findById(userId);
         return feedContentDto;
     }
 
-    @PostMapping("users")
-    public FeedContentDto save(@RequestBody FeedContentDto feedContentDto) {
-        log.info("PostMapping test-url called");
-        feedContentService.save(feedContentDto);
-
-        return feedContentDto;
-    }
+//    @PostMapping("users")
+//    public FeedContentDto save(@RequestBody FeedContentDto feedContentDto) {
+//        log.info("PostMapping test-url called");
+//        feedContentService.save(feedContentDto);
+//
+//        return feedContentDto;
+//    }
 }

@@ -21,7 +21,6 @@ public class FeedContentService {
     public void save(FeedContentDto feedContentDto){
         log.info("FeedContentService feedContent = {}", feedContentDto.toString());
         feedContentRepository.save(feedContentDto);
-
     }
 
     public List<FeedContentDto> findAll() {

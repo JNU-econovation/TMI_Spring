@@ -2,25 +2,41 @@ package com.example.honeybe_spring.domain.repository;
 
 import com.example.honeybe_spring.domain.IdealTypeData;
 import com.example.honeybe_spring.domain.InterestData;
-import com.example.honeybe_spring.domain.TmiData;
+import com.example.honeybe_spring.domain.UserData;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-class TmiDataRepositoryTest {
+class UserDataRepositoryTest {
 
     @Autowired
-    private TmiDataRepository tmiDataRepository;
+    private UserDataRepository userDataRepository;
 
     @Test
     void save() {
+        ArrayList<String> interest = new ArrayList<>();
+        interest.add("흥미1");
+        interest.add("흥미2");
+        interest.add("흥미3");
+        ArrayList<String> personality = new ArrayList<>();
+        personality.add("성격1");
+        personality.add("성격2");
+        personality.add("성격3");
+        ArrayList<String> pick_person = new ArrayList<>();
+        pick_person.add("테스트1");
+        pick_person.add("테스트2");
+        pick_person.add("테스트3");
+        ArrayList<String> user_image = new ArrayList<>();
+        user_image.add("이미지1");
+        user_image.add("이미지2");
+        user_image.add("이미지3");
+
         //given
         InterestData interestData = InterestData.builder()
                 .art(0).concerts(0).dining(0).exercise(2)
@@ -33,19 +49,19 @@ class TmiDataRepositoryTest {
                 .shared_interest(5).sincerity(3)
                 .build();
 
-        TmiData tmiData = TmiData.builder()
+        UserData userData = UserData.builder()
                 .interestData(interestData).idealTypeData(idealTypeData)
                 .age(20).app_join("fun").department("ie").dringking("drink")
-                .gender("man").height(180).interest(new String[]{"1", "2", "3"})
+                .gender("man").height(180).interest(interest)
                 .introduce("자기소개").location(new Point(30, 30)).mbti("ISTP")
-                .nickname("queque").password("passwd").personality(new String[]{"test1", "test2"})
-                .pick_person(new String[]{"aPerson", "bPerson"}).religion("christ")
+                .nickname("queque").password("passwd").personality(personality)
+                .pick_person(pick_person).religion("christ")
                 .smoking("smoking").studentNumber("164761").u_id("userId")
-                .user_image(new String[]{"img1", "img2", "img3"}).build();
+                .user_image(user_image).build();
 
         //when
-        tmiDataRepository.save(tmiData);
-        List<TmiData> all = tmiDataRepository.findAll();
+        userDataRepository.save(userData);
+        List<UserData> all = userDataRepository.findAll();
         //then
         Assertions.assertThat(all.get(0).getInterestData().getHiking()).isEqualTo(3);
     }
