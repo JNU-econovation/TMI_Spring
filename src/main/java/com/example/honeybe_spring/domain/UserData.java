@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 @Data
-@Document("tmiData")
+@Document("userData")
 public class UserData {
     @Id
     String _id;
@@ -22,20 +22,16 @@ public class UserData {
     String department;
     String mbti;
     String religion;
-    Point location;
+    Integer location;
     String smoking;
     String dringking;
     Integer height;
     ArrayList<String> user_image;
-
     InterestData interestData;      // 관심사
-
     ArrayList<String> interest;
     ArrayList<String> personality;
     String introduce;
-
     IdealTypeData idealTypeData;    // 이상형
-
     String app_join;                // 어플 가입 목적
     ArrayList<String> pick_person;           // string[]
 
@@ -43,7 +39,7 @@ public class UserData {
     public UserData(String u_id, String password, String nickname,
                     Integer age, String gender, String studentNumber,
                     String department, String mbti, String religion,
-                    Point location, String smoking, String dringking,
+                    Integer location, String smoking, String dringking,
                     Integer height, ArrayList<String> user_image, InterestData interestData,
                     ArrayList<String> interest, ArrayList<String> personality, String introduce,
                     IdealTypeData idealTypeData, String app_join, ArrayList<String> pick_person) {

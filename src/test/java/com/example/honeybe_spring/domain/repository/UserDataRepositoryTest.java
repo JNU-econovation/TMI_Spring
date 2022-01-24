@@ -29,13 +29,13 @@ class UserDataRepositoryTest {
         personality.add("성격2");
         personality.add("성격3");
         ArrayList<String> pick_person = new ArrayList<>();
-        pick_person.add("테스트1");
-        pick_person.add("테스트2");
-        pick_person.add("테스트3");
+        pick_person.add("userId1");
+        pick_person.add("userId2");
+        pick_person.add("userId3");
         ArrayList<String> user_image = new ArrayList<>();
-        user_image.add("이미지1");
-        user_image.add("이미지2");
-        user_image.add("이미지3");
+        user_image.add("image1");
+        user_image.add("image2");
+        user_image.add("image3");
 
         //given
         InterestData interestData = InterestData.builder()
@@ -51,12 +51,12 @@ class UserDataRepositoryTest {
 
         UserData userData = UserData.builder()
                 .interestData(interestData).idealTypeData(idealTypeData)
-                .age(20).app_join("fun").department("ie").dringking("drink")
-                .gender("man").height(180).interest(interest)
-                .introduce("자기소개").location(new Point(30, 30)).mbti("ISTP")
-                .nickname("queque").password("passwd").personality(personality)
-                .pick_person(pick_person).religion("christ")
-                .smoking("smoking").studentNumber("164761").u_id("userId")
+                .age(20).app_join("fun").department("산업공학과").dringking("drink")
+                .gender("man").height(162).interest(interest)
+                .introduce("나랑 포켓몬 잡으러 갈 사람").location(5).mbti("ENFJ")
+                .nickname("maenji").password("passwd").personality(personality)
+                .pick_person(pick_person).religion("무교")
+                .smoking("흡연").studentNumber("164761").u_id("김현지")
                 .user_image(user_image).build();
 
         //when
