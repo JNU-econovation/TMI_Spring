@@ -1,9 +1,12 @@
 package com.example.honeybe_spring.domain.repository;
 import com.example.honeybe_spring.domain.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-@EnableJpaRepositories
-public interface UserRepository extends JpaRepository<User, String> {
+import java.util.Optional;
 
+public interface UserRepository extends MongoRepository<User, String> {
+    // Optional<User> findByU_id(String u_id) ;
+
+    Optional<User> findByuid(String username);
 }
