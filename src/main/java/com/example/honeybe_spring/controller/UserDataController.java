@@ -30,11 +30,6 @@ public class UserDataController {
         return all;
     }
 
-    @GetMapping("users/{u_id}/feedContent")
-    public FeedContentDto feedContentFindById(@PathVariable String u_id) {
-        return userDataService.feedContentFindById(u_id);
-    }
-
     @GetMapping("users/{u_id}/datas")
     public UserData userDataFindById(@PathVariable String u_id) {
         log.info(TAG + "userDataFindById = {}", u_id);

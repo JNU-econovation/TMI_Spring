@@ -1,5 +1,6 @@
 package com.example.honeybe_spring.domain.dto;
 
+import com.example.honeybe_spring.domain.UserData;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Document("feedContentDto")
 public class FeedContentDto {
     
     private ArrayList<String> user_image;
@@ -37,6 +37,22 @@ public class FeedContentDto {
         this.smoke = smoke;
         this.drink = drink;
         this.height = height;
+    }
+
+    public UserData toEntity() {
+        return UserData.builder()
+                .user_image(user_image)
+                .nickname(nickname)
+                .age(age)
+                .department(department)
+                .location(location)
+                .mbti(mbti)
+                .personality(personality)
+                .introduce(introduce)
+                .smoking(smoke)
+                .dringking(drink)
+                .height(height)
+                .build();
     }
 }
 

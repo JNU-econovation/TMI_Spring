@@ -28,22 +28,6 @@ public class UserDataService {
         return userDataRepository.findAll();
     }
 
-    public FeedContentDto feedContentFindById(String u_id) {
-        Optional<UserData> data = userDataRepository.findById(u_id);
-        if (data.isPresent()) {
-            UserData userData = data.get();
-            FeedContentDto feedContentDto = FeedContentDto.builder()
-                    .user_image(userData.getUser_image())
-                    .nickname(userData.getNickname())
-                    .age(userData.getAge())
-                    .personality(userData.getPersonality())
-                    .introduce(userData.getIntroduce())
-                    .build();
-
-            return feedContentDto;
-        }
-        return null;
-    }
 
     public UserData userDataFindById(String u_id) {
         log.info(TAG + "userDataFindById = {}", u_id);
