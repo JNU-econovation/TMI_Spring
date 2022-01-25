@@ -28,7 +28,6 @@ public class UserDataService {
         return userDataRepository.findAll();
     }
 
-
     public UserData userDataFindById(String u_id) {
         log.info(TAG + "userDataFindById = {}", u_id);
         List<UserData> all = userDataRepository.findAll();
