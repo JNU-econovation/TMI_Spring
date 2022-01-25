@@ -1,6 +1,7 @@
 package com.example.honeybe_spring.controller;
 
 import com.example.honeybe_spring.domain.User;
+import com.example.honeybe_spring.domain.dto.Login;
 import com.example.honeybe_spring.domain.repository.UserRepository;
 import com.example.honeybe_spring.config.JwtAuthenticationProvider;
 import com.example.honeybe_spring.service.CustomUserDetailsService;
@@ -51,67 +52,17 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("/user/info")
-    public UserDetails requestInfo(@RequestParam("uid") String uid){
-        // log.info("register User");
-        return customUserDetailsService.loadUserByUsername(uid);
-    }
-
-
 
     @PostMapping("/user/login")
     public String login(@RequestBody User user){
         String uid = user.getUid();
-        UserDetails member = customUserDetailsService.loadUserByUsername(uid);
-
-        /*
-        User member = userRepository.findByuid(user.get("uid"))
-                .orElseThrow(()->new IllegalArgumentException("가입되지 않은 id입니다."));
-
-         */
+        Login member = customUserDetailsService.loadUserByUsername(uid);
 
         if (!passwordEncoder.matches(user.getPassword(), member.getPassword())){
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
 
-        return jwtAuthenticationProvider.createToken(member.getUsername());
-
-        // String token = jwtAuthenticationProvider.createToken(member.getUsername(), member.getRoles());
-        /*
-        String token = jwtAuthenticationProvider.createToken(member.getUsername());
-        response.setHeader("X-AUTH-TOKEN", token);
-
-        Cookie cookie = new Cookie("X-AUTH-TOKEN", token);
-        cookie.setPath("/");
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        response.addCookie(cookie);
-
-        return token;
-
-         */
+        return jwtAuthenticationProvider.createToken(member.getPassword());
     }
 
-    /*
-    @PostMapping("/user/login")
-    public String login(@RequestBody User user, HttpServletResponse response){
-        User member = userRepository.findById(user.getId())
-                .orElseThrow(()->new IllegalArgumentException("가입되지 않은 id입니다."));
-        if (!passwordEncoder.matches(user.getPassword(), member.getPassword())){
-            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
-        }
-
-        String token = jwtAuthenticationProvider.createToken(member.getUsername(), member.getRoles());
-        response.setHeader("X-AUTH-TOKEN", token);
-
-        Cookie cookie = new Cookie("X-AUTH-TOKEN", token);
-        cookie.setPath("/");
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        response.addCookie(cookie);
-
-        return token;
-    }
-
-     */
 }
